@@ -52,7 +52,9 @@ export default async function Activity({
           required
         >
           {children?.map((c) => (
-            <option value={c.id!}>{c.first_name}</option>
+            <option key={c.id} value={c.id!}>
+              {c.first_name}
+            </option>
           ))}
         </select>
         <label className="text-md" htmlFor="name">
