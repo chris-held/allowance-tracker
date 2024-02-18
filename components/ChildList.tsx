@@ -1,12 +1,8 @@
-import { createClient } from "@/utils/supabase/server";
+import { getChildren } from "@/actions/activity";
 import Link from "next/link";
 
 export default async function ChildList() {
-  const supabase = createClient();
-
-  let { data: children, error } = await supabase
-    .from("children_for_logged_in_user")
-    .select("*");
+  const { data: children, error } = await getChildren();
 
   if (error) {
     return <p className="text-xl">Something broke :(</p>;
