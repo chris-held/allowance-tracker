@@ -6,18 +6,10 @@ export default async function Activity({
 }: {
   searchParams: { message: string };
 }) {
-  const supabase = createClient();
-
-  let { data: children, error } = await supabase
-    .from("children_for_logged_in_user")
-    .select("*");
-
-  if (error) {
-    return <p className="text-xl">Something broke :(</p>;
-  }
-
   const createActivity = async (formData: FormData) => {
     "use server";
+    const supabase = createClient();
+
     const activity = {
       name: formData.get("name") as string,
       description: formData.get("description") as string,
@@ -51,11 +43,8 @@ export default async function Activity({
           className="rounded-md px-4 py-2 bg-inherit border mb-6"
           required
         >
-          {children?.map((c) => (
-            <option key={c.id} value={c.id!}>
-              {c.first_name}
-            </option>
-          ))}
+          <option value="10f678db-6a3a-4cb3-83a1-4e35ff0f4ef3">Violet</option>
+          <option value="7bbbf128-22b0-4f06-be52-3c9a19c616fd">Dottie</option>
         </select>
         <label className="text-md" htmlFor="name">
           Name
