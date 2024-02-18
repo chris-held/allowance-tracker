@@ -1,7 +1,11 @@
+"use client";
+
+import { useFormStatus } from "react-dom";
 import { createActivity } from "@/actions/activity";
 import { Database } from "@/types/supabase";
+import SubmitButton from "./SubmitButton";
 
-export default async function CreateActivityForm({
+export default function CreateActivityForm({
   message,
   user_profiles = [],
 }: {
@@ -57,9 +61,7 @@ export default async function CreateActivityForm({
           type="number"
           required
         />
-        <button className="bg-teal-700 rounded-md px-4 py-2 text-foreground mb-2 text-white">
-          Create
-        </button>
+        <SubmitButton />
         {message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {message}

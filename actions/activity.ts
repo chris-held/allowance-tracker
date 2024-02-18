@@ -1,8 +1,8 @@
+"use server";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
 export const createActivity = async (formData: FormData) => {
-  "use server";
   const supabase = createClient();
 
   const activity = {
